@@ -4,17 +4,17 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 
 
 const Header = () => {
-    const {user,logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
-    const handleLogOut = () =>{
+    const handleLogOut = () => {
         logOut()
-        .then(()=>{})
-        .catch(err => console.log(err));
+            .then(() => { })
+            .catch(err => console.log(err));
     }
     return (
         <div>
 
-           
+
 
             <header className="bg-purple-800 drop-shadow-md fixed w-full z-10 py-6">
                 <nav className="container mx-auto flex items-center justify-between">
@@ -78,21 +78,28 @@ const Header = () => {
                         </div>
                         {
                             user ?
-                            
-                            <button
-                        onClick={handleLogOut}
-                            className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-500 transition duration-300"
-                        >
-                            Logout
-                        </button> : 
-                        <Link
-                        to={'/login'}
-                        className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-500 transition duration-300"
-                    >
-                        Login
-                    </Link>
+
+                                <div>
+                                    <button
+                                        className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-500 transition duration-300 mr-4"
+                                    >
+                                        {user?.displayName}
+                                    </button>
+                                    <button
+                                        onClick={handleLogOut}
+                                        className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-500 transition duration-300"
+                                    >
+                                        Logout
+                                    </button>
+                                </div> :
+                                <Link
+                                    to={'/login'}
+                                    className="bg-yellow-400 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-500 transition duration-300"
+                                >
+                                    Login
+                                </Link>
                         }
-                        
+
                     </div>
                 </nav>
             </header>

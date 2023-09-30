@@ -1,22 +1,42 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
-    const handleSignIn = event =>{
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    const handleSignIn = event => {
         event.preventDefault();
         const form = event.target;
-        // const username = form.username.value;
+        const username = form.username.value;
         const email = form.email.value;
         const password = form.password.value;
-        createUser(email,password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-        })
-        
+        createUser(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(username)
+                .then(() =>{
+                    Swal.fire({
+                        title: 'User created successful. ',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      });
+                      navigate(from, { replace: true });
+                })
+                .catch(err => console.log(err))
+              
+            })
+
     }
     return (
         <div className="bg-purple-800 min-h-screen flex items-center justify-center">

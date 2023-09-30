@@ -12,6 +12,8 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AuthProviders from './Providers/AuthProviders';
+import PrivateRoute from './Private/PrivateRoute';
+import DetailPage from './components/DetailPage';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,15 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>
+      },
+      {
+        path: 'detailPage',
+        element: <DetailPage></DetailPage>
+      },
+      {
+        path: "/courses/:id",
+        element: <PrivateRoute><DetailPage></DetailPage></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
       }
 
     ]

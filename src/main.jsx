@@ -14,6 +14,7 @@ import Register from './Pages/Register/Register';
 import AuthProviders from './Providers/AuthProviders';
 import PrivateRoute from './Private/PrivateRoute';
 import DetailPage from './components/DetailPage';
+import AllCourses from './components/AllCourses';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'detailPage',
         element: <DetailPage></DetailPage>
+      },
+      {
+        path: 'courses',
+        element: <AllCourses></AllCourses>
       },
       {
         path: "/courses/:id",

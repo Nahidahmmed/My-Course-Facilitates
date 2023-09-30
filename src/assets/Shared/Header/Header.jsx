@@ -30,11 +30,11 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                to={"/about"}
+                                to={"/courses"}
                                 href="#"
                                 className="text-white hover:text-yellow-400 transition duration-300"
                             >
-                                About
+                                courses
                             </Link>
                         </li>
                         <li>

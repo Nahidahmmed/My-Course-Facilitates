@@ -9,7 +9,7 @@ const UseCarts = () => {
         queryKey: ['carts',user?.email],
         // queryFn: fetchTodoList,
         queryFn: async () =>{
-            const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
+            const response = await fetch(`https://online-course-server-gamma.vercel.app/carts?email=${user?.email}`)
             return response.json();
         },
       });

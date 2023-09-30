@@ -7,7 +7,7 @@ const Home = () => {
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="/public/selling-online-courses-academy.jpg" className="w-full  mx-auto" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        
+
                         <a href="#slide4" className="btn btn-circle">❮</a>
                         <a href="#slide2" className="btn btn-circle">❯</a>
                     </div>
@@ -35,7 +35,9 @@ const Home = () => {
                 </div>
             </div>
 
-         <PopularCourses></PopularCourses>
+            <div className="pb-12 pt-12">
+                <PopularCourses></PopularCourses>
+            </div>
         </div>
     );
 };

@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "/courses/:id",
         element: <PrivateRoute><DetailPage></DetailPage></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+        loader: ({ params }) => fetch(`https://online-course-server-gamma.vercel.app/courses/${params.id}`)
       }
 
     ]

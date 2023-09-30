@@ -11,7 +11,7 @@ const PopularCourses = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetch('http://localhost:5000/courses')
+        fetch('https://online-course-server-gamma.vercel.app/courses')
             .then(res => res.json())
             .then(data => {setCourses(data) , setLoading(false)})
     }, []);

@@ -16,7 +16,7 @@ const Card = ({ course }) => {
     const handleAddToCart = (course) => {
         const addedCourses = {courseId: course._id,image: course.course.image, title: course.course.title,description: course.course.description, email: user.email}
         if(user && user.email){
-            fetch('http://localhost:5000/carts',{
+            fetch('https://online-course-server-gamma.vercel.app/carts',{
                 method: 'POST',
                 headers:{
                     'content-type' : 'application/json'

@@ -5,10 +5,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import Swal from "sweetalert2";
 
+
 // eslint-disable-next-line react/prop-types
 const Card = ({ course }) => {
     console.log(course._id);
     const {user} = useContext(AuthContext);
+    
     const navigate = useNavigate();
     const location = useLocation();
     const handleAddToCart = (course) => {
@@ -24,6 +26,7 @@ const Card = ({ course }) => {
             .then(res => res.json())
             .then(data =>{
                 if(data.insertedId){
+                    
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',

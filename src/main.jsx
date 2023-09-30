@@ -15,6 +15,13 @@ import AuthProviders from './Providers/AuthProviders';
 import PrivateRoute from './Private/PrivateRoute';
 import DetailPage from './components/DetailPage';
 import AllCourses from './components/AllCourses';
+import {
+  QueryClient,
+  QueryClientProvider
+} from '@tanstack/react-query'
+import AddedCarts from './Pages/AddedCarts/AddedCarts';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -42,6 +49,10 @@ const router = createBrowserRouter([
         element: <AllCourses></AllCourses>
       },
       {
+        path: 'AddedCarts',
+        element: <AddedCarts></AddedCarts>
+      },
+      {
         path: "/courses/:id",
         element: <PrivateRoute><DetailPage></DetailPage></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
@@ -52,8 +63,10 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProviders>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <React.StrictMode>
+        <RouterProvider router={router} />
+      </React.StrictMode>
+    </QueryClientProvider>
   </AuthProviders>
 )

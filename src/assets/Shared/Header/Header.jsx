@@ -16,6 +16,8 @@ const Header = () => {
 
 
 
+
+
             <header className="bg-purple-800 drop-shadow-md fixed w-full z-10 py-6">
                 <nav className="container mx-auto flex items-center justify-between">
                     <div className="text-white text-3xl font-semibold">
@@ -31,10 +33,19 @@ const Header = () => {
                         <li>
                             <Link
                                 to={"/courses"}
-                                href="#"
+                                
                                 className="text-white hover:text-yellow-400 transition duration-300"
                             >
                                 courses
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to={"/AddedCarts"}
+                                
+                                className="text-white hover:text-yellow-400 transition duration-300"
+                            >
+                                Added Carts
                             </Link>
                         </li>
                         <li>

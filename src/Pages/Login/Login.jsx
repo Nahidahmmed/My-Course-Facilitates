@@ -1,15 +1,35 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from 'sweetalert2'
+
 
 
 const Login = () => {
+
+    const {signIn} = useContext(AuthContext);
 
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        signIn(email,password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            Swal.fire({
+              title: 'User Login successful. ',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
+        })
+        
     }
     return (
         <div className="bg-purple-800 min-h-screen flex items-center justify-center">
@@ -24,6 +44,7 @@ const Login = () => {
                 name="email"
                 className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-purple-400"
                 placeholder="Enter your username"
+                required
               />
             </div>
             <div className="mb-4">
@@ -34,6 +55,7 @@ const Login = () => {
                 name="password"
                 className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-purple-400"
                 placeholder="Enter your password"
+                required
               />
             </div>
             <div className="mb-6">
